@@ -1,5 +1,8 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
 export default class App extends React.Component {
   render() {
     return (
@@ -7,14 +10,16 @@ export default class App extends React.Component {
         <Navbar inverse>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">RedditNovelty</a>
+              <Link to="/">RedditNovelty</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
               <NavDropdown eventKey={3} title="Users" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Shitty_Watercolour</MenuItem>
+                <LinkContainer to={{ pathname: '/u/Shitty_Watercolour' }}>
+                  <MenuItem eventKey={3.1}>Shitty_Watercolour</MenuItem>
+                </LinkContainer>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
