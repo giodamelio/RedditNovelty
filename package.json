@@ -1,0 +1,9 @@
+{
+  "name": "redditnovelty",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "author": "Gio d'Amelio",
+  "license": "MIT",
+  "private": true
+}
