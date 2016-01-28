@@ -25,7 +25,13 @@ export default class App extends React.Component {
           </Navbar.Collapse>
         </Navbar>
 
-        {this.props.children}
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              {this.props.children}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

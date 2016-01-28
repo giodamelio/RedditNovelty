@@ -9,7 +9,7 @@ export default {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'sourcemap',
   module: {
     loaders: [
       {
