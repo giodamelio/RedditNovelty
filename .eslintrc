@@ -5,6 +5,7 @@
     "react"
   ],
   "rules": {
-    "func-names": 0
+    "func-names": 0,
+    "react/jsx-uses-react": 1
   }
 }
