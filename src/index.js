@@ -1,12 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Router, Route, browserHistory } from 'react-router';
 
-class App extends React.Component {
-  render() {
-    return <h1>Hello World!</h1>;
-  }
-}
+import App from './app';
 
 render((
-  <App />
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+    {/*<Route path="u" component={Users}>
+        <Route path="/u/:userId" component={User}/>
+      </Route>*/}
+    </Route>
+  </Router>
 ), document.getElementById('app'));
