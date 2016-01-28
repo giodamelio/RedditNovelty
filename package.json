@@ -1,7 +1,6 @@
 {
   "name": "redditnovelty",
   "version": "0.1.0",
-  "description": "",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --port 3141",
@@ -30,5 +29,14 @@
     "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.6",
     "react-router": "^2.0.0-rc5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giodamelio/RedditNovelty.git"
+  },
+  "bugs": {
+    "url": "https://github.com/giodamelio/RedditNovelty/issues"
+  },
+  "homepage": "https://github.com/giodamelio/RedditNovelty#readme",
+  "description": ""
 }
