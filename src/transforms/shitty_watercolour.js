@@ -1,4 +1,26 @@
+import React, { PropTypes } from 'react';
 import _ from 'highland';
+
+class Item extends React.Component {
+  static propTypes = {
+    image: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  };
+
+  render() {
+    return (
+      <div className="row">
+        <div className="col-lg-12 center">
+          <img
+            src={this.props.image}
+            title={this.props.body}
+            className="images"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default function (data, callback) {
   _(data)
@@ -30,6 +52,15 @@ export default function (data, callback) {
       }
       return comment;
     })
+
+    // Turn comment into element
+    .map(comment =>
+      <Item
+        key={comment.id}
+        image={comment.image}
+        body={comment.body}
+      />
+    )
 
     // Handle errors
     .errors(err => callback(err))

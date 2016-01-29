@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class App extends React.Component {
+  static propTypes = {
+    children: PropTypes.object.isRequired,
+  };
+
   render() {
     return (
       <div>

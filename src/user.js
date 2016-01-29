@@ -1,48 +1,75 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Waypoint from 'react-waypoint';
 
 import transform from './transforms';
 
 export default class User extends React.Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    params: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+
+  constructor() {
+    super();
 
     this.state = {
       comments: [],
+      isLoading: true,
     };
+
+    this.loadMoreItems = this.loadMoreItems.bind(this);
   }
 
   componentDidMount() {
-    const username = this.props.params.userId;
-    fetch(`https://www.reddit.com/user/${username}/comments.json`)
+    this.getItems(this.props.params.username);
+  }
+
+  // Get comments from reddit and transform them into user specfic comment elements
+  getItems(username, after) {
+    this.setState({ isLoading: true });
+    const afterId = after ? `?after=${after}` : '';
+    const url = `https://www.reddit.com/user/${username}/comments.json${afterId}`;
+    return fetch(url)
       .then(response => response.json())
 
       // Transform the comments into items based on user
-      .then(json =>
-        transform(username, json.data.children)
-      )
+      .then(json => {
+        this.setState({
+          afterId: json.data.after,
+        });
+        return transform(username, json.data.children);
+      })
 
       .then(comments =>
         this.setState({
-          comments,
+          comments: this.state.comments.concat(comments),
+          isLoading: false,
         })
-      )
+      );
+  }
 
-      .catch(ex => console.error('Parsing failed', ex));
+  loadMoreItems() {
+    console.log('Loading items');
+    this.getItems(this.props.params.username, this.state.afterId);
+  }
+
+  renderWaypoint() {
+    if (!this.state.isLoading) {
+      return (
+        <Waypoint
+          onEnter={this.loadMoreItems}
+          threshold={2}
+        />
+      );
+    }
   }
 
   render() {
     return (
-      <div>
-        {this.state.comments.map((comment, index) =>
-          <div className="row" key={index}>
-            <div className="col-lg-12 center">
-              <img
-                src={comment.image}
-                title={comment.body}
-                className="images" />
-            </div>
-          </div>
-        )}
+      <div className="container">
+        {this.state.comments}
+        {this.renderWaypoint()}
       </div>
     );
   }

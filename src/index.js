@@ -8,7 +8,7 @@ import User from './user';
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <Route path="/u/:userId" component={User} />
+      <Route path="/u/:username" component={User} />
     </Route>
   </Router>
 ), document.getElementById('app'));
