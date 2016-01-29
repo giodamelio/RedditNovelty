@@ -32,13 +32,16 @@ export default class User extends React.Component {
 
   render() {
     return (
-      <div className="center">
+      <div>
         {this.state.comments.map((comment, index) =>
-          <img
-            key={index}
-            src={comment.image}
-            title={comment.body}
-            className="images" />
+          <div className="row" key={index}>
+            <div className="col-lg-12 center">
+              <img
+                src={comment.image}
+                title={comment.body}
+                className="images" />
+            </div>
+          </div>
         )}
       </div>
     );
