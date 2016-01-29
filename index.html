@@ -21,6 +21,40 @@
     .center {
       text-align: center;
     }
+
+    /* A hr with text in the center */
+    .page-number {
+      margin-bottom: 10px;
+      display: block;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .page-number > span {
+      position: relative;
+      display: inline-block;
+    }
+
+    .page-number > span:before,
+    .page-number > span:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 9999px;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .page-number > span:before {
+      right: 100%;
+      margin-right: 15px;
+    }
+
+    .page-number > span:after {
+      left: 100%;
+      margin-left: 15px;
+    }
   </style>
 </head>
 <body>

@@ -3,6 +3,16 @@ import Waypoint from 'react-waypoint';
 
 import transform from './transforms';
 
+// A simple page indicator
+const PageNumber = ({ number }) =>
+  <div className="row">
+    <div className="col-lg-12 center page-number">
+      <span>
+        <strong>Page Number: {number}</strong>
+      </span>
+    </div>
+  </div>;
+
 export default class User extends React.Component {
   static propTypes = {
     params: PropTypes.shape({
@@ -16,6 +26,7 @@ export default class User extends React.Component {
     this.state = {
       comments: [],
       isLoading: true,
+      page: 1,
     };
 
     this.loadMoreItems = this.loadMoreItems.bind(this);
@@ -27,6 +38,8 @@ export default class User extends React.Component {
 
   // Get comments from reddit and transform them into user specfic comment elements
   getItems(username, after) {
+    console.log(`Loading page ${this.state.page}`);
+
     this.setState({ isLoading: true });
     const afterId = after ? `?after=${after}` : '';
     const url = `https://www.reddit.com/user/${username}/comments.json${afterId}`;
@@ -43,14 +56,19 @@ export default class User extends React.Component {
 
       .then(comments =>
         this.setState({
-          comments: this.state.comments.concat(comments),
+          comments: this.state.comments
+            .concat([<PageNumber
+              number={this.state.page}
+              key={this.state.page}
+            />])
+            .concat(comments),
           isLoading: false,
+          page: this.state.page + 1,
         })
       );
   }
 
   loadMoreItems() {
-    console.log('Loading items');
     this.getItems(this.props.params.username, this.state.afterId);
   }
 
