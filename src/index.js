@@ -1,1 +1,11 @@
-console.log(`1 + 100 = ${1 + 100}`);
+import Vue from 'vue';
+
+import App from './components/App.vue';
+
+new Vue({
+  el: 'body',
+  components: {
+    App,
+  },
+});
+

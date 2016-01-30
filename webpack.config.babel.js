@@ -1,12 +1,12 @@
-import path from 'path';
+import { join } from 'path';
 
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-  entry: path.join(__dirname, 'src/index.js'),
+  entry: join(__dirname, 'src/index.js'),
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   devtool: 'sourcemap',
@@ -15,13 +15,18 @@ export default {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src'),
+        include: join(__dirname, 'src'),
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue',
+        include: join(__dirname, 'src'),
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html'),
+      template: join(__dirname, 'index.html'),
       inject: false,
     }),
     new webpack.ProvidePlugin({
