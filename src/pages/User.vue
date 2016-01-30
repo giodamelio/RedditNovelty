@@ -1,10 +1,16 @@
 <template>
   <div class="row">
+    <div v-if="$loadingRouteData" class="center">
+      <i class="fa fa-spinner fa-spin fa-4x"></i>
+    </div>
+
+    <div v-if="!$loadingRouteData">
       <template v-for="comment in comments" track-by="id">
         <div class="col-12-sm">
           <generic-imgur :comment="comment"></generic-imgur>
         </div>
       </template>
+    </div>
   </div>
 </template>
 
@@ -56,4 +62,7 @@ export default {
 </script>
 
 <style>
+  .center {
+    text-align: center;
+  }
 </style>
