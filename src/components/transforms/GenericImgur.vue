@@ -1,5 +1,16 @@
 <template>
-  <img :src="imageUrl" class="images" />
+  <img
+    :src="imageUrl"
+    v-show="!loading"
+    class="images"
+  />
+
+  <div
+    v-show="loading"
+    class="center"
+  >
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
 </template>
 
 <script>
@@ -8,6 +19,19 @@ export default {
     comment: {
       required: true,
     },
+  },
+
+  data() {
+    return {
+      loading: true,
+    };
+  },
+
+  created() {
+    // Load the images
+    const image = new Image();
+    image.src = this.imageUrl;
+    image.onload = () => this.loading = false
   },
 
   computed: {
@@ -34,5 +58,9 @@ export default {
     width: 100%;
     margin-bottom: 10px;
     border: 1px solid grey;
+  }
+
+  .center {
+    text-align: center;
   }
 </style>
