@@ -1,19 +1,21 @@
 <template>
-  <div class="example">{{ msg }}</div>
+  <div id="app">
+    <h1>Hello App!</h1>
+    <p>
+      <!-- use v-link directive for navigation. -->
+      <a v-link="{ path: '/foo' }">Go to Foo</a>
+      <a v-link="{ path: '/bar' }">Go to Bar</a>
+    </p>
+
+    <!-- route outlet -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'Hello world!'
-    }
-  }
 }
 </script>
 
 <style>
-.example {
-  color: red;
-}
 </style>
