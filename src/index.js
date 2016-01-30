@@ -2,26 +2,17 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import App from './components/App.vue';
+import User from './pages/User.vue';
 
 Vue.use(VueRouter);
-
-const Foo = Vue.extend({
-  template: '<p>This is foo!</p>',
-});
-
-const Bar = Vue.extend({
-  template: '<p>This is bar!</p>',
-});
 
 // Create our routes
 const router = new VueRouter({
   history: true,
+  linkActiveClass: 'active',
 }).map({
-  '/foo': {
-    component: Foo,
-  },
-  '/bar': {
-    component: Bar,
+  '/u/:username': {
+    component: User,
   },
 });
 
