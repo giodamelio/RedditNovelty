@@ -23,14 +23,10 @@ export default {
     };
   },
 
-  created() {
-    this.getComments();
-  },
-
   methods: {
     getComments() {
       const url = `https://www.reddit.com/user/${this.$route.params.username}/comments.json`; 
-      fetch(url)
+      return fetch(url)
         .then(response => response.json())
         .then(data => data.data)
         .then(data => {
@@ -47,6 +43,13 @@ export default {
               .filter(comment => GenericImgur.methods.filter(comment))
           );
         });
+    },
+  },
+
+  route: {
+    data() {
+      this.comments = [];
+      return this.getComments();
     },
   },
 }
