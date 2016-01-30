@@ -1,20 +1,24 @@
 <template>
-  <img
-    :src="imageUrl"
-    v-show="!loading"
-    class="images"
-  />
+  <div>
+    <img
+      :src="imageUrl"
+      v-show="!loading"
+      class="images"
+    />
 
-  <div
-    v-show="loading"
-    class="center"
-  >
-    <i class="fa fa-spinner fa-spin"></i>
+    <div
+      v-show="loading"
+      class="center"
+    >
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'GenericImgur',
+
   props: {
     comment: {
       required: true,

@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import App from './components/App.vue';
 import User from './pages/User.vue';
 
-Vue.config.debug = true
+Vue.config.debug = true;
 Vue.use(VueRouter);
 
 // Create our routes
@@ -13,6 +13,7 @@ const router = new VueRouter({
   linkActiveClass: 'active',
 }).map({
   '/u/:username': {
+    name: 'user',
     component: User,
   },
 });

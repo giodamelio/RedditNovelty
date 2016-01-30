@@ -33,9 +33,9 @@
               Users <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <a v-link="{ path: '/u/shitty_watercolour' }">
-                  Shitty_Watercolour
+              <li v-for="user in users">
+                <a v-link="{ name: 'user', params: { username: $key }}">
+                  {{ user.name }}
                 </a>
               </li>
             </ul>
@@ -47,6 +47,15 @@
 </template>
 
 <script>
+import users from '../users';
+
+export default {
+  data() {
+    return {
+      users,
+    };
+  },
+}
 </script>
 
 <style>
