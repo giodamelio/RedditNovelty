@@ -20,10 +20,11 @@ export default class User extends React.Component {
     }).isRequired,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      username: props.params.username,
       comments: [],
       isLoading: true,
       page: 1,
@@ -33,7 +34,12 @@ export default class User extends React.Component {
   }
 
   componentDidMount() {
-    this.getItems(this.props.params.username);
+    console.log(this.state.username);
+    this.loadMoreItems(this.state.username);
+  }
+
+  componentWillReceiveProps() {
+    console.log(this.state.username);
   }
 
   // Get comments from reddit and transform them into user specfic comment elements
@@ -69,7 +75,7 @@ export default class User extends React.Component {
   }
 
   loadMoreItems() {
-    this.getItems(this.props.params.username, this.state.afterId);
+    this.getItems(this.state.username, this.state.afterId);
   }
 
   renderWaypoint() {

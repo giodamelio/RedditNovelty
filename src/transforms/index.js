@@ -1,10 +1,11 @@
-import shittyWatercolour from './shitty_watercolour';
+import genericImgur from './generic_imgur';
 
 export default function transform(username, data) {
   return new Promise((resolve, reject) => {
     /* eslint-disable quote-props */
     const transforms = {
-      'shitty_watercolour': shittyWatercolour,
+      'shitty_watercolour': genericImgur,
+      'awildsketchappeared': genericImgur,
     };
     /* eslint-enable quote-props */
 

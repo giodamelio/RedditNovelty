@@ -24,6 +24,9 @@ export default class App extends React.Component {
                 <LinkContainer to={{ pathname: '/u/Shitty_Watercolour' }}>
                   <MenuItem eventKey={3.1}>Shitty_Watercolour</MenuItem>
                 </LinkContainer>
+                <LinkContainer to={{ pathname: '/u/AWildSketchAppeared' }}>
+                  <MenuItem eventKey={3.2}>AWildSketchAppeared</MenuItem>
+                </LinkContainer>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
