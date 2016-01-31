@@ -22,6 +22,10 @@ export default {
         loader: 'vue',
         include: join(__dirname, 'src'),
       },
+      {
+        test: /\.json/,
+        loader: 'json',
+      },
     ],
   },
   plugins: [

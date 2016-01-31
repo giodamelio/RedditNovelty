@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import markdownit from 'markdown-it';
+
 export default {
   name: 'GenericBody',
 
