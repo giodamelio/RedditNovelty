@@ -5,9 +5,14 @@
     </div>
 
     <div v-if="!$loadingRouteData">
-      <template v-for="comment in comments" track-by="id">
+      <template
+        v-for="comment in comments"
+        v-ref:comments
+        track-by="id"
+      >
         <div class="col-12-sm">
           <component :is="transform" :comment="comment"></component>
+          <hr />
         </div>
       </template>
     </div>
@@ -36,9 +41,10 @@ export default {
   },
 
   methods: {
-    getComments() {
+    getComments(after) {
       const username = this.$route.params.username;
-      const url = `https://www.reddit.com/user/${username}/comments.json`; 
+      const afterId = this.afterId ? `?after=${this.afterId}` : '';
+      const url = `https://www.reddit.com/user/${username}/comments.json${afterId}`;
       return fetch(url)
         .then(response => response.json())
         .then(data => data.data)
@@ -63,8 +69,13 @@ export default {
   },
 
   route: {
+    canReuse() {
+      return false;
+    },
+
     data() {
       this.comments = [];
+      this.afterId = null;
       return this.getComments();
     },
   },
