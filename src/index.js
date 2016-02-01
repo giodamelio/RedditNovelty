@@ -4,6 +4,8 @@ import VueRouter from 'vue-router';
 import App from './components/App.vue';
 import User from './pages/User.vue';
 
+import './optimizedScroll';
+
 Vue.config.debug = true;
 Vue.use(VueRouter);
 

@@ -1,21 +1,23 @@
 <template>
-  <div class="row">
-    <div v-if="$loadingRouteData" class="center">
-      <i class="fa fa-spinner fa-spin fa-4x"></i>
+  <div v-if="$loadingRouteData" class="center">
+    <div class="row">
+      <div class="col-12-cm">
+        <i class="fa fa-spinner fa-spin fa-4x"></i>
+      </div>
     </div>
-
-    <div v-if="!$loadingRouteData">
-      <template
-        v-for="comment in comments"
-        v-ref:comments
-        track-by="id"
-      >
+  </div>
+  <div v-if="!$loadingRouteData">
+    <template
+      v-for="comment in comments"
+      track-by="id"
+    >
+      <div class="row">
         <div class="col-12-sm">
           <component :is="transform" :comment="comment"></component>
           <hr />
         </div>
-      </template>
-    </div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -38,6 +40,14 @@ export default {
     transform() {
       return users[this.$route.params.username].transform.name;
     },
+  },
+
+  // Attach and detach scroll events
+  ready() {
+    window.addEventListener("optimizedScroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("optimizedScroll", this.handleScroll);
   },
 
   methods: {
@@ -65,6 +75,22 @@ export default {
               .filter(comment => transform.methods.filter(comment))
           );
         });
+    },
+
+    handleScroll() {
+      if (this.getScrollPercent() >= 80) {
+        console.log('Loading new items');
+        this.getComments(this.afterId);
+      }
+    },
+
+    // Return the percent the pages is scrolled
+    getScrollPercent() {
+      const h = document.documentElement,
+            b = document.body,
+            st = 'scrollTop',
+            sh = 'scrollHeight';
+      return h[st]||b[st] / ((h[sh]||b[sh]) - h.clientHeight) * 100;
     },
   },
 
