@@ -13,7 +13,7 @@
     >
       <div class="row">
         <div class="col-12-sm">
-          <component :is="transform" :comment="comment"></component>
+          <comment :transform="transform" :comment="comment"></comment>
           <hr />
         </div>
       </div>
@@ -23,9 +23,11 @@
 
 <script>
 import users, { components } from '../users';
+import Comment from '../components/Comment.vue';
 
 export default {
   components: {
+    Comment,
     ...components,
   },
 
