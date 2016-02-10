@@ -2,7 +2,7 @@
   <div>
     <div v-if="loading" class="center">
         <div class="row">
-          <div class="col-12-cm">
+          <div class="col-12-sm">
             <i class="fa fa-spinner fa-spin fa-2x"></i>
           </div>
         </div>
