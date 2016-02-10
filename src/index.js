@@ -14,7 +14,7 @@ Vue.use(VueRouter);
 const md = new MarkdownIt({
   linkify: true,
 });
-Vue.filter('markdown', (value) => md.render(value));
+Vue.filter('markdown', (value) => md.render(value || 'Error rendering markdown'));
 
 // Create our routes
 const router = new VueRouter({

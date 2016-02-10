@@ -8,7 +8,9 @@
         </div>
       </div>
       <div v-if="!loading">
-        <reddit-comment :comment="parentComment"></reddit-comment>
+        <div v-if="stickied != null">
+          <reddit-comment :comment="parentComment"></reddit-comment>
+        </div>
         <reddit-comment :comment="comment" :indent-level="1"></reddit-comment>
       </div>
   </div>
