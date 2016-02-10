@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center">
     <img
       :src="imageUrl"
       v-show="!loading"
@@ -59,7 +59,8 @@ export default {
 
 <style scoped>
   .images {
-    width: 100%;
+    width: auto;
+    height: 70vh;
     border: 1px solid grey;
   }
 
