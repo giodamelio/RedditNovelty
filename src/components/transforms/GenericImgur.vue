@@ -59,8 +59,8 @@ export default {
 
 <style scoped>
   .images {
-    width: auto;
-    height: 70vh;
+    max-width: 80vw;
+    max-height: 70vh;
     border: 1px solid grey;
   }
 
