@@ -20,5 +20,21 @@ export default {
     name: 'Poem_for_your_sprog',
     transform: GenericBody,
   },
+  'sure_ill_draw_that': {
+    name: 'Sure_Ill_Draw_That',
+    transform: GenericImgur,
+  },
+  'animates_everything': {
+    name: 'Animates_Everything',
+    transform: GenericImgur,
+  },
+  'etch_a_sketcher': {
+    name: 'Etch_A_Sketcher',
+    transform: GenericImgur,
+  },
+  'illustratingreddit': {
+    name: 'illustratingreddit',
+    transform: GenericImgur,
+  },
 };
 /* eslint-enable quote-props */
