@@ -4,6 +4,7 @@ import MarkdownIt from 'markdown-it';
 
 import App from './components/App.vue';
 import User from './pages/User.vue';
+import Home from './pages/Home.vue';
 
 import './optimizedScroll';
 
@@ -21,6 +22,10 @@ const router = new VueRouter({
   history: true,
   linkActiveClass: 'active',
 }).map({
+  '/': {
+    name: 'home',
+    component: Home,
+  },
   '/u/:username': {
     name: 'user',
     component: User,
