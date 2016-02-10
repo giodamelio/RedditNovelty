@@ -13,8 +13,10 @@
     >
       <div class="row">
         <div class="col-12-sm">
-          <comment :transform="transform" :comment="comment"></comment>
-          <hr />
+          <comment
+            :content-transform="transform"
+            :comment="comment"
+          ></comment>
         </div>
       </div>
     </template>

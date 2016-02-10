@@ -1,7 +1,7 @@
 <template>
   <div class="center">
     <p>
-      {{{ comment_pretty }}}
+      {{{ comment.body | markdown }}}
     </p>
   </div>
 </template>
@@ -15,13 +15,6 @@ export default {
   props: {
     comment: {
       required: true,
-    },
-  },
-
-  computed: {
-    comment_pretty() {
-      const md = new markdownit();
-      return md.render(this.comment.body);      
     },
   },
 

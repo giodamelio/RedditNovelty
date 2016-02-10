@@ -57,10 +57,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .images {
     width: 100%;
-    margin-bottom: 10px;
     border: 1px solid grey;
   }
 
